@@ -1,5 +1,7 @@
-package dev.blaji.movies;
+package dev.blaji.movies.controller;
 
+import dev.blaji.movies.domain.Review;
+import dev.blaji.movies.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

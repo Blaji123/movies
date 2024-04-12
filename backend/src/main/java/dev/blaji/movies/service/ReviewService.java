@@ -1,6 +1,9 @@
-package dev.blaji.movies;
+package dev.blaji.movies.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import dev.blaji.movies.domain.Movie;
+import dev.blaji.movies.domain.Review;
+import dev.blaji.movies.repository.ReviewRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Update;
@@ -9,12 +12,11 @@ import org.springframework.stereotype.Service;
 
 
 @Service
+@AllArgsConstructor
 public class ReviewService {
-    @Autowired
     private ReviewRepository reviewRepository;
-
-    @Autowired
     private MongoTemplate mongoTemplate;
+
     public Review createReview(String reviewBody, String imdbId){
         Review review = reviewRepository.insert(new Review(reviewBody));
 

@@ -1,4 +1,4 @@
-package dev.blaji.movies;
+package dev.blaji.movies.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

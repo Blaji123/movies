@@ -4,9 +4,11 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
+import Logout from "../auth/Logout";
 
 const Header = () => {
+  const isLoggedIn = localStorage.getItem("token");
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container fluid>
@@ -28,10 +30,22 @@ const Header = () => {
               Watch List
             </NavLink>
           </Nav>
-          <Button variant="outline-info" className="me-2">
-            Login
-          </Button>
-          <Button variant="outline-info">Register</Button>
+          {isLoggedIn ? (
+            <Logout />
+          ) : (
+            <>
+              <Button variant="outline-info" className="me-2">
+                <Link to={"/login"} style={{ textDecoration: "none" }}>
+                  Login
+                </Link>
+              </Button>
+              <Button variant="outline-info" className="me-2">
+                <Link to={"/register"} style={{ textDecoration: "none" }}>
+                  Register
+                </Link>
+              </Button>
+            </>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>

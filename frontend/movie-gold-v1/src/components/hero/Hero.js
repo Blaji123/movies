@@ -2,19 +2,49 @@ import "./Hero.css";
 import Carousel from "react-material-ui-carousel";
 import { Paper } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
+import { faCirclePlay, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import api from "../../api/axiosConfig";
+import { useState } from "react";
 
 const Hero = ({ movies }) => {
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   function reviews(movieId) {
     navigate(`/Reviews/${movieId}`);
   }
 
+  const saveMovieInWatchList = async (imdbId, watch) => {
+    try {
+      const response = await api.post(`watchlist/${imdbId}/save`, watch, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
+      console.log(response);
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
+
+  const saveMovie = async (imdbId, movie) => {
+    const email = localStorage.getItem("userId");
+    if (email === null) {
+      setError("You must be logged in order to save movies");
+    }
+    const newWatch = { email: email, movies: movie };
+    try {
+      await saveMovieInWatchList(imdbId, newWatch);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div className="movie-carousel-container">
+      {error && <div className="text text-danger">Error : {error}</div>}
       <Carousel>
         {movies?.map((movie) => {
           return (
@@ -44,6 +74,15 @@ const Hero = ({ movies }) => {
                           />
                         </div>
                       </Link>
+                      <div
+                        className="play-button-icon-container"
+                        onClick={() => saveMovie(movie.imdbId, movie)}
+                      >
+                        <FontAwesomeIcon
+                          icon={faPlus}
+                          className="play-button-icon"
+                        />
+                      </div>
                       <div className="movie-review-button-container">
                         <Button
                           variant="info"

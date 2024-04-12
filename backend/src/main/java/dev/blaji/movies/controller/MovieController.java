@@ -1,6 +1,8 @@
-package dev.blaji.movies;
+package dev.blaji.movies.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import dev.blaji.movies.domain.Movie;
+import dev.blaji.movies.service.MovieService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,9 +12,9 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/movies")
+@AllArgsConstructor
 @CrossOrigin(origins = "*")
 public class MovieController {
-    @Autowired
     private MovieService movieService;
     @GetMapping
     public ResponseEntity<List<Movie>> getAllMovies(){
