@@ -1,57 +1,53 @@
-Movies Website
-Description
+#Movies Website
+
+## Description
 This project is a Movies website with backend implemented in Spring Boot and frontend in React. It provides functionalities such as user authentication, movie listing, reviewing movies, and adding movies to the watchlist.
 
-Backend
-The backend is developed in Spring Boot and includes the following main components:
+## Table of Contents
+- [Features](#features)
+- [Demo](#demo)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Endpoints](#api-endpoints)
+- [Contributing](#contributing)
+- [License](#license)
 
-Authentication: User registration and login functionalities are implemented using Spring Security and JWT tokens.
-Controllers: RESTful APIs for user authentication, movie listing, reviewing movies, and managing the watchlist.
-Services: Services to handle business logic, including user registration, movie operations, review management, and watchlist management.
-Security: JWT token generation and validation are managed using JwtUtils.
-Persistence: MongoDB is used as the database to store movie and user-related data.
-Dependencies
-Spring Boot: Provides the core framework for building the backend application.
-Spring Data MongoDB: Simplifies the interaction with MongoDB for data persistence.
-Spring Security: Provides authentication and authorization functionalities.
-Lombok: Reduces boilerplate code in Java classes.
-JUnit: Framework for writing and running tests.
-JJWT: Library for JSON Web Tokens.
-Frontend
-The frontend of the website is implemented in React. It interacts with the backend through RESTful APIs to fetch movie data, manage user authentication, and perform other actions.
+## Features
+- User authentication 
+- watch trailers
+- put movies in watchlist
+- comment on movies
+- Mobile-responsive UI
 
-Setup Instructions
-Backend Setup:
+## Tech Stack
+**Frontend**: React 
+**Backend**: Spring Boot, REST API  
+**Database**: MongoDB 
+**Authentication**: JWT  
 
-Clone the repository.
-Ensure you have MongoDB installed and running locally.
-Open the backend project in your preferred IDE.
-Configure the MongoDB connection details in application.properties.
-Run the Spring Boot application.
-Frontend Setup:
+## Installation
 
-Clone the repository.
-Navigate to the frontend directory.
-Install dependencies using npm install.
-Start the development server using npm start.
-Accessing the Website:
+### Prerequisites
+- Node.js (v18+)
+- MongoDB
+- Java (JDK 11+)
+- Maven
 
-Once both backend and frontend servers are running, access the website through the provided URL or localhost address.
-API Endpoints
-Authentication:
+### Backend Setup
+1. Clone the repository:
+   ```bash
+   git clone ....
+2. mvn clean install
+3. create a MongoDB database, also you should change the application.properties with your own mongo database
+4. run app
 
-POST /auth/register-user: Register a new user.
-POST /auth/login: Authenticate a user.
-Movie Operations:
+### Frontend Setup
+1. npm install
+2. npm start
 
-GET /api/v1/movies: Get all movies.
-GET /api/v1/movies/{imdbId}: Get details of a single movie.
-Review Management:
+### USAGE
+Open your web browser and navigate to http://localhost:3000. Use the provided login/register functionality to authenticate as a user. Use your account to watch the trailers, add comments and put the movies in the watchlist.
 
-POST /api/v1/reviews: Create a review for a movie.
-Watchlist Management:
 
-POST /watchlist/{imdbId}/save: Add a movie to the watchlist.
-GET /watchlist/{email}/getByUserEmail: Get movies in the watchlist for a user.
-Contributors
-Blajan David
+
