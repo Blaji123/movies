@@ -5,13 +5,9 @@ This project is a Movies website with backend implemented in Spring Boot and fro
 
 ## Table of Contents
 - [Features](#features)
-- [Demo](#demo)
 - [Tech Stack](#tech-stack)
 - [Installation](#installation)
 - [Usage](#usage)
-- [API Endpoints](#api-endpoints)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 - User authentication 
