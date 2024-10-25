@@ -1,4 +1,4 @@
-#Movies Website
+# Movies Website
 
 ## Description
 This project is a Movies website with backend implemented in Spring Boot and frontend in React. It provides functionalities such as user authentication, movie listing, reviewing movies, and adding movies to the watchlist.
